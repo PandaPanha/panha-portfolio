@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +7,83 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">SC</div>
-            <ul class="nav-menu">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#languages">Languages</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" aria-label="Toggle theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">SC</div>
+                <button class="sidebar-close" aria-label="Close sidebar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 5L5 15M5 5l10 10"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <!-- Get Started Group -->
+                <div class="nav-group">
+                    <div class="nav-group-title" data-i18n="nav.getStarted">Get Started</div>
+                    <ul class="nav-list">
+                        <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                    </ul>
+                </div>
+
+                <!-- Essentials Group -->
+                <div class="nav-group">
+                    <div class="nav-group-title" data-i18n="nav.essentials">Essentials</div>
+                    <ul class="nav-list">
+                        <li><a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a></li>
+                        <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+                        <li><a href="#education" class="nav-link" data-i18n="nav.education">Education</a></li>
+                        <li><a href="#languages" class="nav-link" data-i18n="nav.languages">Languages</a></li>
+                    </ul>
+                </div>
+
+                <!-- Connect Group -->
+                <div class="nav-group">
+                    <div class="nav-group-title" data-i18n="nav.connect">Connect</div>
+                    <ul class="nav-list">
+                        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <!-- Top Header -->
+            <header class="top-header">
+                <button class="sidebar-toggle" aria-label="Toggle sidebar">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 5h14M3 10h14M3 15h14"/>
+                    </svg>
+                </button>
+                <div class="header-title" data-i18n="header.documentation">Documentation</div>
+                <div class="header-actions">
+                    <div class="lang-selector">
+                        <button class="lang-toggle" aria-label="Toggle language" title="Switch language">
+                            <img src="https://flagcdn.com/gb.svg" alt="English" class="lang-flag" id="current-flag">
+                        </button>
+                        <div class="lang-popover">
+                            <button class="lang-option" data-lang="en">
+                                <img src="https://flagcdn.com/gb.svg" alt="English" class="lang-flag">
+                                <span class="lang-name">English</span>
+                            </button>
+                            <button class="lang-option" data-lang="km">
+                                <img src="https://flagcdn.com/kh.svg" alt="Khmer" class="lang-flag">
+                                <span class="lang-name">ខ្មែរ</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="print-toggle" aria-label="Print page" title="Print or save as PDF">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9V2h8v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                            <path d="M6 14h8v4H6v-4z"/>
+                        </svg>
+                    </button>
+                    <button class="theme-toggle" aria-label="Toggle theme">
                     <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343M14 10C14 12.2091 12.2091 14 10 14C7.79086 14 6 12.2091 6 10C6 7.79086 7.79086 6 10 6C12.2091 6 14 7.79086 14 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -30,148 +91,144 @@
                         <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
                     </svg>
                 </button>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        <section class="hero" id="about">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-name">
-                        <span class="greeting">Hello, I'm</span>
-                        <span class="name">Sam Chanpanha</span>
-                    </h1>
-                    <p class="hero-subtitle">Fullstack Developer</p>
-                    <p class="hero-description">
-                        Currently working as a <span class="highlight">Frontend Developer</span>, 
-                        crafting beautiful and functional web experiences. 
-                        Passionate about building scalable applications with modern technologies.
-                    </p>
-                    <div class="hero-meta">
-                        <span class="meta-item">Age: 23</span>
-                        <span class="meta-divider">•</span>
-                        <span class="meta-item available-text">Available for opportunities</span>
-                    </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="floating-card">
-                        <div class="card-content">
-                            <div class="code-line"></div>
-                            <div class="code-line"></div>
-                            <div class="code-line short"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </header>
 
-        <section class="experience" id="experience">
-            <div class="container">
-                <h2 class="section-title">Experience</h2>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="experience-title">
-                                <h3 class="job-title">Fullstack Developer</h3>
-                                <span class="company-name">ML</span>
-                            </div>
-                            <span class="experience-date">2023 - 2024</span>
+            <main class="doc-content">
+                <section class="doc-section" id="about">
+                    <div class="section-header">
+                        <h1 class="doc-title" data-i18n="about.title">About</h1>
+                        <p class="doc-subtitle" data-i18n="about.subtitle">Fullstack Developer</p>
+                    </div>
+                    <div class="doc-body">
+                        <div class="intro-block">
+                            <h2>Sam Chanpanha</h2>
+                            <p class="lead-text" data-i18n="about.description">
+                                Currently working as a <code class="inline-code">Frontend Developer</code>, 
+                                crafting beautiful and functional web experiences. 
+                                Passionate about building scalable applications with modern technologies.
+                            </p>
                         </div>
-                        <ul class="experience-description">
-                            <li>Maintained admin Dashboard System</li>
-                            <li>Met with client to understand requirement</li>
-                            <li>Solved complex requirement from client</li>
-                            <li>Integrated new features</li>
-                            <li>Data analyzing and data modeling</li>
-                            <li>System testing</li>
-                            <li>Refactored old code to promote scalability</li>
-                        </ul>
-                        <div class="experience-tags">
-                            <span class="experience-tag">React.js</span>
-                            <span class="experience-tag">Next.js</span>
-                            <span class="experience-tag">TypeScript</span>
-                            <span class="experience-tag">Supabase</span>
-                            <span class="experience-tag">PostgreSQL</span>
-                            <span class="experience-tag">Vercel</span>
-                            <span class="experience-tag">Drizzle ORM</span>
-                            <span class="experience-tag">Vite</span>
-                            <span class="experience-tag">Zustand</span>
-                            <span class="experience-tag">Tailwind CSS</span>
-                            <span class="experience-tag">shadcn/ui</span>
+                        <div class="meta-block">
+                            <div class="meta-item">
+                                <span class="meta-label" data-i18n="about.ageLabel">Age</span>
+                                <span class="meta-value">23</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label" data-i18n="about.statusLabel">Status</span>
+                                <span class="meta-value badge-available" data-i18n="about.statusValue">Available for opportunities</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="experience-title">
-                                <h3 class="job-title">Junior Frontend Developer</h3>
-                                <span class="company-name">Coolbeans Digital</span>
-                            </div>
-                            <span class="experience-date">2024 - 2024</span>
-                        </div>
-                        <ul class="experience-description">
-                            <li>Worked with UX/UI designers to deliver eye-catching and user-friendly websites</li>
-                            <li>Worked with project manager to deliver products that meet client expectation</li>
-                            <li>Worked with QA to ensure that no bugs are left behind</li>
-                            <li>Worked with Senior Devs to solve technical problems</li>
-                            <li>Integrated REST APIs</li>
-                            <li>Developed and maintained old projects and new projects</li>
-                            <li>Focused on clean code, reusable code, SEO, and performance optimization</li>
-                        </ul>
-                        <div class="experience-tags">
-                            <span class="experience-tag">Vue.js</span>
-                            <span class="experience-tag">Nuxt.js</span>
-                            <span class="experience-tag">TypeScript</span>
-                            <span class="experience-tag">Naive UI</span>
-                            <span class="experience-tag">Prime Vue</span>
-                        </div>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="experience-title">
-                                <h3 class="job-title">Mid Frontend Developer</h3>
-                                <span class="company-name">Wintex Mega Plus</span>
-                            </div>
-                            <span class="experience-date">2024 - Current</span>
-                        </div>
-                        <ul class="experience-description">
-                            <li>Maintained multiples frontend projects</li>
-                            <li>Made feedback on UI/UX to follow based on actual requirement</li>
-                            <li>Helped solving frontend issue</li>
-                            <li>Managed and helped training junior frontend developers</li>
-                            <li>Revamped older projects</li>
-                            <li>Optimized performance</li>
-                        </ul>
-                        <div class="experience-tags">
-                            <span class="experience-tag">TypeScript</span>
-                            <span class="experience-tag">Vue.js</span>
-                            <span class="experience-tag">Nuxt.js</span>
-                            <span class="experience-tag">Pinia</span>
-                            <span class="experience-tag">Tailwind CSS</span>
-                            <span class="experience-tag">Element UI</span>
-                            <span class="experience-tag">shadcn/ui</span>
-                            <span class="experience-tag">Cloudflare</span>
-                            <span class="experience-tag">Husky</span>
-                            <span class="experience-tag">Vite</span>
-                            <span class="experience-tag">Docker</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section class="skills" id="skills">
-            <div class="container">
-                <h2 class="section-title">Technologies & Tools</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3 class="category-title">Frontend</h3>
-                        <div class="skill-tags">
+                <section class="doc-section" id="experience">
+                    <div class="section-header">
+                        <h1 class="doc-title" data-i18n="experience.title">Experience</h1>
+                        <p class="doc-subtitle" data-i18n="experience.subtitle">Professional work history</p>
+                    </div>
+                    <div class="doc-body">
+                        <div class="experience-list">
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div>
+                                        <h3 class="job-title" data-i18n="experience.job1.title">Fullstack Developer</h3>
+                                        <span class="company-name">ML</span>
+                                    </div>
+                                    <span class="experience-date">2023 - 2024</span>
+                                </div>
+                                <ul class="experience-description">
+                                    <li data-i18n="experience.job1.duty1">Maintained admin Dashboard System</li>
+                                    <li data-i18n="experience.job1.duty2">Met with client to understand requirement</li>
+                                    <li data-i18n="experience.job1.duty3">Solved complex requirement from client</li>
+                                    <li data-i18n="experience.job1.duty4">Integrated new features</li>
+                                    <li data-i18n="experience.job1.duty5">Data analyzing and data modeling</li>
+                                    <li data-i18n="experience.job1.duty6">System testing</li>
+                                    <li data-i18n="experience.job1.duty7">Refactored old code to promote scalability</li>
+                                </ul>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">React.js</span>
+                                    <span class="tech-badge">Next.js</span>
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Supabase</span>
+                                    <span class="tech-badge">PostgreSQL</span>
+                                    <span class="tech-badge">Vercel</span>
+                                    <span class="tech-badge">Drizzle ORM</span>
+                                    <span class="tech-badge">Vite</span>
+                                    <span class="tech-badge">Zustand</span>
+                                    <span class="tech-badge">Tailwind CSS</span>
+                                    <span class="tech-badge">shadcn/ui</span>
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div>
+                                        <h3 class="job-title" data-i18n="experience.job2.title">Junior Frontend Developer</h3>
+                                        <span class="company-name">Coolbeans Digital</span>
+                                    </div>
+                                    <span class="experience-date">2024 - 2024</span>
+                                </div>
+                                <ul class="experience-description">
+                                    <li data-i18n="experience.job2.duty1">Worked with UX/UI designers to deliver eye-catching and user-friendly websites</li>
+                                    <li data-i18n="experience.job2.duty2">Worked with project manager to deliver products that meet client expectation</li>
+                                    <li data-i18n="experience.job2.duty3">Worked with QA to ensure that no bugs are left behind</li>
+                                    <li data-i18n="experience.job2.duty4">Worked with Senior Devs to solve technical problems</li>
+                                    <li data-i18n="experience.job2.duty5">Integrated REST APIs</li>
+                                    <li data-i18n="experience.job2.duty6">Developed and maintained old projects and new projects</li>
+                                    <li data-i18n="experience.job2.duty7">Focused on clean code, reusable code, SEO, and performance optimization</li>
+                                </ul>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">Vue.js</span>
+                                    <span class="tech-badge">Nuxt.js</span>
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Naive UI</span>
+                                    <span class="tech-badge">Prime Vue</span>
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <div>
+                                        <h3 class="job-title" data-i18n="experience.job3.title">Mid Frontend Developer</h3>
+                                        <span class="company-name">Wintex Mega Plus</span>
+                                    </div>
+                                    <span class="experience-date" data-i18n="experience.job3.date">2024 - Current</span>
+                                </div>
+                                <ul class="experience-description">
+                                    <li data-i18n="experience.job3.duty1">Maintained multiples frontend projects</li>
+                                    <li data-i18n="experience.job3.duty2">Made feedback on UI/UX to follow based on actual requirement</li>
+                                    <li data-i18n="experience.job3.duty3">Helped solving frontend issue</li>
+                                    <li data-i18n="experience.job3.duty4">Managed and helped training junior frontend developers</li>
+                                    <li data-i18n="experience.job3.duty5">Revamped older projects</li>
+                                    <li data-i18n="experience.job3.duty6">Optimized performance</li>
+                                </ul>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Vue.js</span>
+                                    <span class="tech-badge">Nuxt.js</span>
+                                    <span class="tech-badge">Pinia</span>
+                                    <span class="tech-badge">Tailwind CSS</span>
+                                    <span class="tech-badge">Element UI</span>
+                                    <span class="tech-badge">shadcn/ui</span>
+                                    <span class="tech-badge">Cloudflare</span>
+                                    <span class="tech-badge">Husky</span>
+                                    <span class="tech-badge">Vite</span>
+                                    <span class="tech-badge">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="skills">
+                    <div class="section-header">
+                        <h1 class="doc-title" data-i18n="skills.title">Technologies & Tools</h1>
+                        <p class="doc-subtitle" data-i18n="skills.subtitle">Tech stack and expertise</p>
+                    </div>
+                    <div class="doc-body">
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3 class="category-title" data-i18n="skills.frontend">Frontend</h3>
+                                <div class="skill-tags">
                             <span class="skill-tag">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" class="skill-icon">
                                 HTML
@@ -224,11 +281,11 @@
                                 <img src="https://pinia.vuejs.org/logo.svg" alt="Pinia" class="skill-icon">
                                 Pinia
                             </span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">Backend</h3>
-                        <div class="skill-tags">
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3 class="category-title" data-i18n="skills.backend">Backend</h3>
+                                <div class="skill-tags">
                             <span class="skill-tag">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js" class="skill-icon">
                                 Node.js
@@ -249,11 +306,11 @@
                                 <img src="https://avatars.githubusercontent.com/u/108468352?s=200&v=4" alt="Drizzle ORM" class="skill-icon">
                                 Drizzle ORM
                             </span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">Cloud & Tools</h3>
-                        <div class="skill-tags">
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h3 class="category-title" data-i18n="skills.cloud">Cloud & Tools</h3>
+                                <div class="skill-tags">
                             <span class="skill-tag">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg" alt="Cloudflare" class="skill-icon">
                                 Cloudflare
@@ -278,91 +335,98 @@
                                 <img src="https://cdn.simpleicons.org/vitest/6E9F18" alt="Vitest" class="skill-icon">
                                 Vitest
                             </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="education" id="education">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="education-list">
-                    <div class="education-item">
-                        <div class="education-header">
-                            <h3 class="education-degree">Computer Science & Engineering Bachelor's Degree</h3>
-                            <span class="education-institution">Royal University of Phnom Penh</span>
-                        </div>
-                        <span class="education-date">2020 - 2024</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="languages" id="languages">
-            <div class="container">
-                <h2 class="section-title">Languages</h2>
-                <div class="languages-list">
-                    <div class="language-item">
-                        <div class="language-info">
-                            <span class="language-name">English</span>
-                            <span class="language-level-text">Advanced</span>
-                        </div>
-                        <div class="language-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill english-progress" style="width: 85%"></div>
+                                </div>
                             </div>
-                            <span class="progress-percentage">85%</span>
                         </div>
                     </div>
-                    <div class="language-item">
-                        <div class="language-info">
-                            <span class="language-name">Khmer</span>
-                            <span class="language-level-text">Native</span>
-                        </div>
-                        <div class="language-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill khmer-progress" style="width: 100%"></div>
-                            </div>
-                            <span class="progress-percentage">100%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <section class="contact" id="contact">
-            <div class="container">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="contact-description">
-                    Interested in working together or have a project in mind? 
-                    Feel free to reach out.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:hugoheisenburger@gmail.com" class="contact-link">
-                        <span>Email</span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M2.5 5L10 10L17.5 5M2.5 15H17.5V5H2.5V15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <a href="https://t.me/chanpanhaa" target="_blank" class="contact-link">
-                        <span>Telegram</span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM13.75 7.5L12.5 13.125C12.375 13.625 12.0625 13.75 11.6875 13.5L9.5 11.875L8.4375 12.9375C8.3125 13.0625 8.1875 13.125 8 13.125L8.1875 10.875L12.5 7.0625C12.6875 6.875 12.4375 6.75 12.1875 6.9375L6.875 10.375L4.75 9.75C4.25 9.625 4.25 9.25 4.75 9L13.25 6.25C13.625 6.125 13.9375 6.3125 13.75 6.875L13.75 7.5Z" fill="currentColor"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+                <section class="doc-section" id="education">
+                    <div class="section-header">
+                        <h1 class="doc-title" data-i18n="education.title">Education</h1>
+                        <p class="doc-subtitle" data-i18n="education.subtitle">Academic background</p>
+                    </div>
+                    <div class="doc-body">
+                        <div class="education-item">
+                            <div class="education-header">
+                                <h3 class="education-degree" data-i18n="education.degree">Computer Science & Engineering Bachelor's Degree</h3>
+                                <span class="education-institution" data-i18n="education.institution">Royal University of Phnom Penh</span>
+                            </div>
+                            <span class="education-date">2020 - 2024</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="languages">
+                    <div class="section-header">
+                        <h1 class="doc-title" data-i18n="languages.title">Languages</h1>
+                        <p class="doc-subtitle" data-i18n="languages.subtitle">Language proficiency</p>
+                    </div>
+                    <div class="doc-body">
+                        <div class="languages-list">
+                            <div class="language-item">
+                                <div class="language-info">
+                                    <span class="language-name" data-i18n="languages.english">English</span>
+                                    <span class="language-level-text" data-i18n="languages.advanced">Advanced</span>
+                                </div>
+                                <div class="language-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill english-progress" style="width: 85%"></div>
+                                    </div>
+                                    <span class="progress-percentage">85%</span>
+                                </div>
+                            </div>
+                            <div class="language-item">
+                                <div class="language-info">
+                                    <span class="language-name" data-i18n="languages.khmer">Khmer</span>
+                                    <span class="language-level-text" data-i18n="languages.native">Native</span>
+                                </div>
+                                <div class="language-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill khmer-progress" style="width: 100%"></div>
+                                    </div>
+                                    <span class="progress-percentage">100%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="contact">
+                    <div class="section-header">
+                        <h1 class="doc-title" data-i18n="contact.title">Contact</h1>
+                        <p class="doc-subtitle" data-i18n="contact.subtitle">Let's connect</p>
+                    </div>
+                    <div class="doc-body">
+                        <p class="contact-description" data-i18n="contact.description">
+                            Interested in working together or have a project in mind? 
+                            Feel free to reach out.
+                        </p>
+                        <div class="contact-links">
+                            <a href="mailto:hugoheisenburger@gmail.com" class="contact-link">
+                                <span data-i18n="contact.email">Email</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M2.5 5L10 10L17.5 5M2.5 15H17.5V5H2.5V15Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                            <a href="https://t.me/chanpanhaa" target="_blank" class="contact-link">
+                                <span data-i18n="contact.telegram">Telegram</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 2C5.58 2 2 5.58 2 10C2 14.42 5.58 18 10 18C14.42 18 18 14.42 18 10C18 5.58 14.42 2 10 2ZM13.75 7.5L12.5 13.125C12.375 13.625 12.0625 13.75 11.6875 13.5L9.5 11.875L8.4375 12.9375C8.3125 13.0625 8.1875 13.125 8 13.125L8.1875 10.875L12.5 7.0625C12.6875 6.875 12.4375 6.75 12.1875 6.9375L6.875 10.375L4.75 9.75C4.25 9.625 4.25 9.25 4.75 9L13.25 6.25C13.625 6.125 13.9375 6.3125 13.75 6.875L13.75 7.5Z" fill="currentColor"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Sam Chanpanha. Simplicity > complexity.</p>
-        </div>
+        <p>&copy; 2024 Sam Chanpanha. <span data-i18n="footer.tagline">Simplicity > complexity.</span></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
 

@@ -1,202 +1,236 @@
-// Mobile menu toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+import { translations } from './translations.js';
 
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    menuToggle.classList.toggle('active');
+let currentLang = localStorage.getItem('language') || 'en';
+
+const flagMap = {
+    'en': 'https://flagcdn.com/gb.svg',
+    'km': 'https://flagcdn.com/kh.svg'
+};
+
+function translatePage(lang) {
+    currentLang = lang;
+    localStorage.setItem('language', lang);
+    document.documentElement.setAttribute('lang', lang);
+    
+    const langFlag = document.querySelector('.lang-toggle .lang-flag');
+    if (langFlag) {
+        langFlag.src = flagMap[lang];
+        langFlag.alt = lang === 'en' ? 'English' : 'Khmer';
+    }
+    
+    document.querySelectorAll('.lang-option').forEach(option => {
+        if (option.getAttribute('data-lang') === lang) {
+            option.classList.add('active');
+        } else {
+            option.classList.remove('active');
+        }
+    });
+    
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            if (key === 'about.description') {
+                const text = translations[lang][key];
+                element.innerHTML = text.replace(/Frontend Developer/g, '<code class="inline-code">Frontend Developer</code>');
+            } else {
+                element.textContent = translations[lang][key];
+            }
+        }
+    });
+}
+
+translatePage(currentLang);
+
+const langSelector = document.querySelector('.lang-selector');
+const langToggle = document.querySelector('.lang-toggle');
+const langOptions = document.querySelectorAll('.lang-option');
+
+langToggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langSelector.classList.toggle('active');
 });
 
-// Close menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        menuToggle.classList.remove('active');
+document.addEventListener('click', (e) => {
+    if (!langSelector.contains(e.target)) {
+        langSelector.classList.remove('active');
+    }
+});
+
+langOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const selectedLang = option.getAttribute('data-lang');
+        translatePage(selectedLang);
+        langSelector.classList.remove('active');
     });
 });
 
-// Smooth scroll for navigation links
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.querySelector('.sidebar-toggle');
+const sidebarClose = document.querySelector('.sidebar-close');
+
+sidebarToggle?.addEventListener('click', () => {
+    sidebar.classList.add('open');
+});
+
+sidebarClose?.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+});
+
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+            sidebar.classList.remove('open');
+        }
+    });
+});
+
+document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 1024 && 
+        sidebar.classList.contains('open') && 
+        !sidebar.contains(e.target) && 
+        !sidebarToggle.contains(e.target)) {
+        sidebar.classList.remove('open');
+    }
+});
+
+const themeToggle = document.querySelector('.theme-toggle');
+const html = document.documentElement;
+
+const currentTheme = localStorage.getItem('theme') || 'light';
+html.setAttribute('data-theme', currentTheme);
+
+themeToggle?.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+const printToggle = document.querySelector('.print-toggle');
+printToggle?.addEventListener('click', () => {
+    window.open('print.html', '_blank');
+});
+
+const sections = document.querySelectorAll('.doc-section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+let isManualNavigation = false;
+let manualNavigationTimeout = null;
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            isManualNavigation = true;
+            
+            if (manualNavigationTimeout) {
+                clearTimeout(manualNavigationTimeout);
+            }
+            
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+            
             const offsetTop = target.offsetTop - 80;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
             });
+            
+            manualNavigationTimeout = setTimeout(() => {
+                isManualNavigation = false;
+            }, 1500);
         }
     });
 });
-
-// Theme toggle functionality
-const themeToggle = document.querySelector('.theme-toggle');
-const html = document.documentElement;
-const navbar = document.querySelector('.navbar');
-
-// Get theme from localStorage or default to light
-const currentTheme = localStorage.getItem('theme') || 'light';
-html.setAttribute('data-theme', currentTheme);
-
-// Function to update navbar background based on theme and scroll position
-function updateNavbarBackground() {
-    const currentScroll = window.pageYOffset;
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    
-    if (currentScroll > 50) {
-        if (isDark) {
-            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        }
-        navbar.style.boxShadow = isDark 
-            ? '0 2px 20px rgba(0, 0, 0, 0.3)' 
-            : '0 2px 20px rgba(0, 0, 0, 0.05)';
-    } else {
-        if (isDark) {
-            navbar.style.background = 'rgba(10, 10, 10, 0.8)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-        }
-        navbar.style.boxShadow = 'none';
-    }
-}
-
-// Update navbar on theme change
-themeToggle.addEventListener('click', () => {
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    // Immediately update navbar background
-    updateNavbarBackground();
-});
-
-// Navbar background on scroll
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    updateNavbarBackground();
-    lastScroll = window.pageYOffset;
-});
-
-// Set initial navbar background on page load
-window.addEventListener('load', updateNavbarBackground);
-updateNavbarBackground();
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe skill categories
-document.querySelectorAll('.skill-category').forEach(category => {
-    category.style.opacity = '0';
-    category.style.transform = 'translateY(20px)';
-    category.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    observer.observe(category);
-});
-
-// Observe contact links
-document.querySelectorAll('.contact-link').forEach(link => {
-    link.style.opacity = '0';
-    link.style.transform = 'translateY(20px)';
-    link.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    observer.observe(link);
-});
-
-// Add stagger delay to skill tags
-document.querySelectorAll('.skill-category').forEach((category, categoryIndex) => {
-    const tags = category.querySelectorAll('.skill-tag');
-    tags.forEach((tag, tagIndex) => {
-        tag.style.transitionDelay = `${(categoryIndex * 0.1) + (tagIndex * 0.05)}s`;
-    });
-});
-
-// Active navigation tracking based on scroll position
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 
 const sectionObserverOptions = {
-    threshold: [0.1, 0.3, 0.5],
-    rootMargin: '-100px 0px -40% 0px'
+    threshold: [0.2, 0.5, 0.8],
+    rootMargin: '-80px 0px -60% 0px'
 };
 
 const sectionObserver = new IntersectionObserver((entries) => {
+    if (isManualNavigation) return;
+    
+    let maxRatio = 0;
+    let activeSectionId = null;
+    
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            
-            // Remove active class from all nav links
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Add active class to corresponding nav link
-            const activeLink = document.querySelector(`.nav-menu a[href="#${id}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            activeSectionId = entry.target.getAttribute('id');
         }
     });
+    
+    if (activeSectionId) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
 }, sectionObserverOptions);
 
-// Observe all sections
 sections.forEach(section => {
     sectionObserver.observe(section);
 });
 
-// Set active state based on scroll position
 function setActiveSection() {
-    const scrollPosition = window.scrollY + 200;
+    if (isManualNavigation) return;
+    
+    const scrollPosition = window.scrollY + 100;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     
-    // Check if we're near the bottom of the page
-    const isNearBottom = scrollPosition + windowHeight >= documentHeight - 100;
+    const isNearBottom = scrollPosition + windowHeight >= documentHeight - 150;
     
     if (isNearBottom) {
-        // If near bottom, activate the last section (contact)
         const lastSection = sections[sections.length - 1];
         const lastSectionId = lastSection.getAttribute('id');
         navLinks.forEach(link => link.classList.remove('active'));
-        const activeLink = document.querySelector(`.nav-menu a[href="#${lastSectionId}"]`);
+        const activeLink = document.querySelector(`.nav-link[href="#${lastSectionId}"]`);
         if (activeLink) {
             activeLink.classList.add('active');
         }
         return;
     }
     
-    // Otherwise, find the section that's currently in view
-    sections.forEach((section, index) => {
+    let closestSection = null;
+    let minDistance = Infinity;
+    
+    sections.forEach((section) => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        const sectionBottom = sectionTop + sectionHeight;
+        const distance = Math.abs(sectionTop - scrollPosition);
         
-        // Check if scroll position is within this section
-        if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionBottom - 100) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+        if (sectionTop <= scrollPosition + 150 && distance < minDistance) {
+            minDistance = distance;
+            closestSection = sectionId;
         }
     });
+    
+    if (closestSection) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-link[href="#${closestSection}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
 }
 
-// Set initial active section on page load
 window.addEventListener('load', setActiveSection);
 window.addEventListener('scroll', setActiveSection);
 
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        if (window.innerWidth > 1024) {
+            sidebar.classList.remove('open');
+        }
+    }, 250);
+});
