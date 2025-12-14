@@ -1,0 +1,211 @@
+{
+  "personal": {
+    "name": "Sam Chanpanha",
+    "title": "Fullstack Developer",
+    "description": "Currently working as a Frontend Developer, 3 years experience crafting beautiful and functional web experiences. Passionate about building scalable applications with modern technologies.",
+    "age": 24,
+    "status": "Available for opportunities"
+  },
+  "experience": [
+    {
+      "title": "Mid Frontend Developer",
+      "company": "Wintex Mega Plus",
+      "date": "2024 - Current",
+      "duties": [
+        "Maintained multiples frontend projects",
+        "Made feedback on UI/UX to follow based on actual requirement",
+        "Helped solving frontend issue",
+        "Managed and helped training junior frontend developers",
+        "Revamped older projects",
+        "Optimized performance"
+      ],
+      "techStack": [
+        "TypeScript",
+        "Vue.js",
+        "Nuxt.js",
+        "Pinia",
+        "Tailwind CSS",
+        "Element UI",
+        "shadcn/ui",
+        "Cloudflare",
+        "Husky",
+        "Vite",
+        "Docker"
+      ]
+    },
+    {
+      "title": "Junior Frontend Developer",
+      "company": "Coolbeans Digital",
+      "date": "2024 - 2024",
+      "duties": [
+        "Worked with UX/UI designers to deliver eye-catching and user-friendly websites",
+        "Worked with project manager to deliver products that meet client expectation",
+        "Worked with QA to ensure that no bugs are left behind",
+        "Worked with Senior Devs to solve technical problems",
+        "Integrated REST APIs",
+        "Developed and maintained old projects and new projects",
+        "Focused on clean code, reusable code, SEO, and performance optimization"
+      ],
+      "techStack": [
+        "Vue.js",
+        "Nuxt.js",
+        "TypeScript",
+        "Naive UI",
+        "Prime Vue"
+      ]
+    },
+    {
+      "title": "Fullstack Developer",
+      "company": "ML",
+      "date": "2023 - 2024",
+      "duties": [
+        "Maintained admin Dashboard System",
+        "Met with client to understand requirement",
+        "Solved complex requirement from client",
+        "Integrated new features",
+        "Data analyzing and data modeling",
+        "System testing",
+        "Refactored old code to promote scalability"
+      ],
+      "techStack": [
+        "React.js",
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Vercel",
+        "Drizzle ORM",
+        "Vite",
+        "Zustand",
+        "Tailwind CSS",
+        "shadcn/ui"
+      ]
+    }
+  ],
+  "skills": {
+    "frontend": [
+      {
+        "name": "HTML",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+      },
+      {
+        "name": "CSS",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+      },
+      {
+        "name": "React.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+      },
+      {
+        "name": "Vue.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+      },
+      {
+        "name": "Next.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+      },
+      {
+        "name": "Nuxt.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+      },
+      {
+        "name": "Vite",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+      },
+      {
+        "name": "shadcn/ui",
+        "icon": "https://cdn.simpleicons.org/shadcnui/000000"
+      },
+      {
+        "name": "Zustand",
+        "icon": null,
+        "emoji": "🐻"
+      },
+      {
+        "name": "Pinia",
+        "icon": "https://pinia.vuejs.org/logo.svg"
+      }
+    ],
+    "backend": [
+      {
+        "name": "Node.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+      },
+      {
+        "name": "Nest.js",
+        "icon": "https://nestjs.com/img/logo-small.svg"
+      },
+      {
+        "name": "PostgreSQL",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+      },
+      {
+        "name": "Drizzle ORM",
+        "icon": "https://avatars.githubusercontent.com/u/108468352?s=200&v=4"
+      }
+    ],
+    "cloud": [
+      {
+        "name": "Cloudflare",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg"
+      },
+      {
+        "name": "Vercel",
+        "icon": "https://cdn.simpleicons.org/vercel/000000"
+      },
+      {
+        "name": "Supabase",
+        "icon": "https://cdn.simpleicons.org/supabase/3ECF8E"
+      },
+      {
+        "name": "Git",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "https://cdn.simpleicons.org/githubactions/2088FF"
+      },
+      {
+        "name": "Vitest",
+        "icon": "https://cdn.simpleicons.org/vitest/6E9F18"
+      }
+    ]
+  },
+  "education": {
+    "degree": "Computer Science & Engineering Bachelor's Degree",
+    "institution": "Royal University of Phnom Penh",
+    "date": "2020 - 2024"
+  },
+  "languages": [
+    {
+      "name": "English",
+      "level": "Advanced",
+      "percentage": 85
+    },
+    {
+      "name": "Khmer",
+      "level": "Native",
+      "percentage": 100
+    }
+  ],
+  "contact": {
+    "email": "hugoheisenburger@gmail.com",
+    "telegram": "chanpanhaa"
+  }
+}

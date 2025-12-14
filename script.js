@@ -1,4 +1,5 @@
 import { translations } from './translations.js';
+import { loadData, renderExperience, renderSkills, renderLanguages, renderPersonalInfo, renderEducation, renderContact } from './data-loader.js';
 
 let currentLang = localStorage.getItem('language') || 'en';
 
@@ -233,4 +234,33 @@ window.addEventListener('resize', () => {
             sidebar.classList.remove('open');
         }
     }, 250);
+});
+
+loadData().then(data => {
+    const personalContainer = document.querySelector('.intro-block');
+    if (personalContainer) {
+        renderPersonalInfo(data, personalContainer);
+    }
+    
+    const ageElement = document.querySelector('.meta-block .meta-value');
+    if (ageElement) ageElement.textContent = data.personal.age;
+    
+    const experienceContainer = document.getElementById('experience-list');
+    if (experienceContainer) renderExperience(data, experienceContainer);
+    
+    const skillsContainer = document.getElementById('skills-grid');
+    if (skillsContainer) renderSkills(data, skillsContainer);
+    
+    const educationContainer = document.getElementById('education-container');
+    if (educationContainer) renderEducation(data, educationContainer);
+    
+    const languagesContainer = document.getElementById('languages-list');
+    if (languagesContainer) renderLanguages(data, languagesContainer);
+    
+    const contactContainer = document.getElementById('contact-links');
+    if (contactContainer) renderContact(data, contactContainer);
+    
+    setTimeout(() => {
+        translatePage(currentLang);
+    }, 100);
 });

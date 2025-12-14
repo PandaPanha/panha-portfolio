@@ -257,159 +257,126 @@
 </head>
 <body>
     <div class="container">
-        <!-- About Section -->
-        <div class="section header">
-            <h1>Sam Chanpanha</h1>
-            <p>Fullstack Developer</p>
-            <p>Currently working as a Frontend Developer, crafting beautiful and functional web experiences. Passionate about building scalable applications with modern technologies.</p>
-            <div class="meta">
-                <div class="meta-item">
-                    <span class="meta-label">Age</span>
-                    <span class="meta-value">23</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Status</span>
-                    <span class="meta-value">Available for opportunities</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Languages</span>
-                    <span class="meta-value">English (Advanced), Khmer (Native)</span>
-                </div>
-            </div>
-            <div class="contact-info" style="margin-top: 8px;">
-                <div class="contact-links" style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <span style="font-size: 11px;">Email: hugoheisenburger@gmail.com</span>
-                    <span style="font-size: 11px;">Telegram: @chanpanhaa</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Experience Section -->
-        <div class="section">
+        <div class="section header" id="header-section"></div>
+        <div class="section" id="experience-section">
             <h2>Experience</h2>
-            
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Mid Frontend Developer</div>
-                        <div class="company">Wintex Mega Plus</div>
-                    </div>
-                    <div class="date">2024 - Current</div>
-                </div>
-                <ul class="duties">
-                    <li>Maintained multiples frontend projects</li>
-                    <li>Made feedback on UI/UX to follow based on actual requirement</li>
-                    <li>Helped solving frontend issue</li>
-                    <li>Managed and helped training junior frontend developers</li>
-                    <li>Revamped older projects</li>
-                    <li>Optimized performance</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Junior Frontend Developer</div>
-                        <div class="company">Coolbeans Digital</div>
-                    </div>
-                    <div class="date">2024 - 2024</div>
-                </div>
-                <ul class="duties">
-                    <li>Worked with UX/UI designers to deliver eye-catching and user-friendly websites</li>
-                    <li>Worked with project manager to deliver products that meet client expectation</li>
-                    <li>Worked with QA to ensure that no bugs are left behind</li>
-                    <li>Worked with Senior Devs to solve technical problems</li>
-                    <li>Integrated REST APIs</li>
-                    <li>Developed and maintained old projects and new projects</li>
-                    <li>Focused on clean code, reusable code, SEO, and performance optimization</li>
-                </ul>
-            </div>
-
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Fullstack Developer</div>
-                        <div class="company">ML</div>
-                    </div>
-                    <div class="date">2023 - 2024</div>
-                </div>
-                <ul class="duties">
-                    <li>Maintained admin Dashboard System</li>
-                    <li>Met with client to understand requirement</li>
-                    <li>Solved complex requirement from client</li>
-                    <li>Integrated new features</li>
-                    <li>Data analyzing and data modeling</li>
-                    <li>System testing</li>
-                    <li>Refactored old code to promote scalability</li>
-                </ul>
-            </div>
+            <div id="experience-list"></div>
         </div>
-
-        <!-- Skills Section -->
-        <div class="section">
+        <div class="section" id="skills-section">
             <h2>Technologies & Tools</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">Nuxt.js</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">Vite</span>
-                        <span class="skill-tag">shadcn/ui</span>
-                        <span class="skill-tag">Zustand</span>
-                        <span class="skill-tag">Pinia</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Nest.js</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Drizzle ORM</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Cloud & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Cloudflare</span>
-                        <span class="skill-tag">Vercel</span>
-                        <span class="skill-tag">Supabase</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">Vitest</span>
-                    </div>
-                </div>
-            </div>
+            <div class="skills-grid" id="skills-grid"></div>
         </div>
-
-        <!-- Education Section -->
-        <div class="section">
+        <div class="section" id="education-section">
             <h2>Education</h2>
-            <div class="education-item">
-                <div class="education-info">
-                    <h3>Computer Science & Engineering Bachelor's Degree</h3>
-                    <p>Royal University of Phnom Penh</p>
-                </div>
-                <div class="date">2020 - 2024</div>
-            </div>
+            <div id="education-container"></div>
         </div>
-
     </div>
 
-    <script>
-        // Auto-print when page loads
-        window.onload = function() {
+    <script type="module">
+        async function loadData() {
+            const response = await fetch('./data.json');
+            return await response.json();
+        }
+
+        function renderPrintPage(data) {
+            const headerSection = document.getElementById('header-section');
+            const languagesText = data.languages.map(lang => `${lang.name} (${lang.level})`).join(', ');
+            
+            headerSection.innerHTML = `
+                <h1>${data.personal.name}</h1>
+                <p>${data.personal.title}</p>
+                <p>${data.personal.description}</p>
+                <div class="meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Age</span>
+                        <span class="meta-value">${data.personal.age}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Status</span>
+                        <span class="meta-value">${data.personal.status}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Languages</span>
+                        <span class="meta-value">${languagesText}</span>
+                    </div>
+                </div>
+                <div class="contact-info" style="margin-top: 8px;">
+                    <div class="contact-links" style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <span style="font-size: 11px;">Email: ${data.contact.email}</span>
+                        <span style="font-size: 11px;">Telegram: @${data.contact.telegram}</span>
+                    </div>
+                </div>
+            `;
+
+            const experienceList = document.getElementById('experience-list');
+            experienceList.innerHTML = '';
+            data.experience.forEach(job => {
+                const jobElement = document.createElement('div');
+                jobElement.className = 'experience-item';
+                jobElement.innerHTML = `
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">${job.title}</div>
+                            <div class="company">${job.company}</div>
+                        </div>
+                        <div class="date">${job.date}</div>
+                    </div>
+                    <ul class="duties">
+                        ${job.duties.map(duty => `<li>${duty}</li>`).join('')}
+                    </ul>
+                `;
+                experienceList.appendChild(jobElement);
+            });
+
+            const skillsGrid = document.getElementById('skills-grid');
+            skillsGrid.innerHTML = '';
+            
+            const frontendContainer = document.createElement('div');
+            frontendContainer.className = 'skill-category';
+            frontendContainer.innerHTML = `
+                <h3>Frontend</h3>
+                <div class="skill-tags">
+                    ${data.skills.frontend.map(skill => `<span class="skill-tag">${skill.name}</span>`).join('')}
+                </div>
+            `;
+            skillsGrid.appendChild(frontendContainer);
+            
+            const backendContainer = document.createElement('div');
+            backendContainer.className = 'skill-category';
+            backendContainer.innerHTML = `
+                <h3>Backend</h3>
+                <div class="skill-tags">
+                    ${data.skills.backend.map(skill => `<span class="skill-tag">${skill.name}</span>`).join('')}
+                </div>
+            `;
+            skillsGrid.appendChild(backendContainer);
+            
+            const cloudContainer = document.createElement('div');
+            cloudContainer.className = 'skill-category';
+            cloudContainer.innerHTML = `
+                <h3>Cloud & Tools</h3>
+                <div class="skill-tags">
+                    ${data.skills.cloud.map(skill => `<span class="skill-tag">${skill.name}</span>`).join('')}
+                </div>
+            `;
+            skillsGrid.appendChild(cloudContainer);
+
+            const educationContainer = document.getElementById('education-container');
+            educationContainer.innerHTML = `
+                <div class="education-item">
+                    <div class="education-info">
+                        <h3>${data.education.degree}</h3>
+                        <p>${data.education.institution}</p>
+                    </div>
+                    <div class="date">${data.education.date}</div>
+                </div>
+            `;
+        }
+
+        loadData().then(data => {
+            renderPrintPage(data);
             window.print();
-        };
+        });
     </script>
 </body>
 </html>
