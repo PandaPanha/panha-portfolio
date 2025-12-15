@@ -119,10 +119,19 @@ const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
 let isManualNavigation = false;
 let manualNavigationTimeout = null;
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+navLinks.forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#' || href.length <= 1) {
+            return;
+        }
+        
+        if (!href.startsWith('#')) {
+            return;
+        }
+        
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             isManualNavigation = true;
             
@@ -165,15 +174,15 @@ const sectionObserver = new IntersectionObserver((entries) => {
     });
     
     if (activeSectionId) {
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-        
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
         const activeLink = document.querySelector(`.nav-link[href="#${activeSectionId}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
         }
-    }
 }, sectionObserverOptions);
 
 sections.forEach(section => {
@@ -215,12 +224,12 @@ function setActiveSection() {
     });
     
     if (closestSection) {
-        navLinks.forEach(link => link.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
         const activeLink = document.querySelector(`.nav-link[href="#${closestSection}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
         }
-    }
 }
 
 window.addEventListener('load', setActiveSection);

@@ -131,12 +131,12 @@ export function renderEducation(data, container) {
 }
 
 export function renderContact(data, container) {
-    const emailLink = container.querySelector('a[href^="mailto:"]');
+    const emailLink = document.getElementById('email-link');
     if (emailLink) {
         emailLink.href = `mailto:${data.contact.email}`;
     }
     
-    const telegramLink = container.querySelector('a[href*="t.me"]');
+    const telegramLink = document.getElementById('telegram-link');
     if (telegramLink) {
         telegramLink.href = `https://t.me/${data.contact.telegram}`;
     }

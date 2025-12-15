@@ -37,7 +37,7 @@ export const translations = {
         'experience.job2.duty7': 'Focused on clean code, reusable code, SEO, and performance optimization',
         'experience.job3.title': 'Mid Frontend Developer',
         'experience.job3.date': '2024 - Current',
-        'experience.job3.duty1': 'Maintained multiples frontend projects',
+        'experience.job3.duty1': 'Maintained multiple frontend projects',
         'experience.job3.duty2': 'Made feedback on UI/UX to follow based on actual requirement',
         'experience.job3.duty3': 'Helped solving frontend issue',
         'experience.job3.duty4': 'Managed and helped training junior frontend developers',
